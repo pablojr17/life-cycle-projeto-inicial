@@ -2,10 +2,17 @@
   class="checkbox"
   type="checkbox"
   name="comprado"
-  id="comprado">
-<p class="description">Nome do item</p>
-<div class="d-contents">
-  <fa-icon class="delete-icon" [icon]="faTrash" ></fa-icon>
-  <fa-icon class="edit-icon" [icon]="faPen" ></fa-icon>
+  [checked]="item.comprado"
+  id="comprado"
+  (change)="checarItem()"
+/>
+<p class="description" [class.line-through]="item.comprado">{{ item.nome }}</p>
+<div class="d-contents" *ngIf="!item.comprado">
+  <fa-icon
+    (click)="deletarItem()"
+    class="delete-icon"
+    [icon]="faTrash"
+  ></fa-icon>
+  <fa-icon (click)="editarItem()" class="edit-icon" [icon]="faPen"></fa-icon>
 </div>
-<small class="date">00/10/2000</small>
+<small class="date">{{ item.data }}/small> </small>
